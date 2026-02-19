@@ -65,6 +65,23 @@ export default function Home() {
         toggleSeleccion={toggleSeleccion}
       />
 
+      <div className="leyenda-estados">
+  <div className="item-estado">
+    <span className="circulo reservado"></span>
+    <span>Reservado</span>
+  </div>
+
+  <div className="item-estado">
+    <span className="circulo pagado"></span>
+    <span>Pagado</span>
+  </div>
+
+  <div className="item-estado">
+    <span className="circulo libre"></span>
+    <span>Disponible</span>
+  </div>
+</div>
+
       {/* BARRA PROGRESO */}
       <BarraProgreso numeros={numeros} />
 
