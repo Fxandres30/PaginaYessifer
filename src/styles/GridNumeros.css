@@ -27,17 +27,23 @@ h1, h2, h3, .titulo, .subtitulo {
 .botonNumero {
   width: 100%;
   aspect-ratio: 1 / 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-weight: bold;
   border-radius: 0.25rem;
   border: 1px solid transparent;
   box-sizing: border-box;
   transition: all 0.3s ease;
-  font-size: clamp(10px, 3vw, 16px); /* 👈 solución real al problema */
-  text-align: center;
-  cursor: pointer;
-  padding: 0;
-}
 
+  font-size: clamp(10px, 3vw, 16px);
+  cursor: pointer;
+
+  padding: 0;
+  line-height: 1;
+}
 
 .leyenda-estados {
   display: flex;

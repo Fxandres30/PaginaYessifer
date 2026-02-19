@@ -46,7 +46,6 @@ export default function Home() {
     scale: 2,
   } as any
 );
-
       const blob = await new Promise<Blob | null>((resolve) =>
         canvas.toBlob(resolve, "image/png")
       );
