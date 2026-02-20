@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
 import { Toaster } from "react-hot-toast";
-import html2canvas from "html2canvas";
 
 import "../styles/BarraProgreso.css";
 import "../styles/header.css";
@@ -35,43 +34,47 @@ export default function Home() {
   /* =======================
      FUNCIÓN COMPARTIR PRO
   ======================== */
-  const compartirTabla = async () => {
-    const elemento = document.getElementById("area-compartir");
-    if (!elemento) return;
+const compartirTabla = async () => {
+  const contenedor = document.querySelector(".numeros-container");
+  if (!contenedor) return;
 
-    try {
-      const canvas = await html2canvas(
-  elemento,
-  {
+  contenedor.classList.add("modo-captura");
+
+  const html2canvas = require("html2canvas");
+
+  const rect = contenedor.getBoundingClientRect();
+
+  const canvas = await html2canvas(contenedor, {
     scale: 2,
-  } as any
-);
-      const blob = await new Promise<Blob | null>((resolve) =>
-        canvas.toBlob(resolve, "image/png")
-      );
+    backgroundColor: "#ffffff",
+    width: rect.width,
+    height: rect.height,
+    windowWidth: document.documentElement.scrollWidth,
+    windowHeight: document.documentElement.scrollHeight,
+    scrollX: 0,
+    scrollY: 0,
+  });
 
-      if (!blob) return;
+  contenedor.classList.remove("modo-captura");
 
-      const file = new File([blob], "dinamica.png", {
-        type: "image/png",
-      });
+  const blob = await new Promise<Blob | null>((resolve) =>
+    canvas.toBlob(resolve, "image/png")
+  );
 
-      // Compartir nativo en móviles modernos
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          title: "Dinámica Activa",
-          text: "Mira el estado actual de la dinámica 👇",
-          files: [file],
-        });
-      } else {
-        // Fallback elegante
-        alert("Tu navegador no permite compartir imagen directamente.");
-      }
-    } catch (error) {
-      console.error("Error al compartir:", error);
-    }
-  };
+  if (!blob) return;
 
+  const file = new File([blob], "numeros.png", {
+    type: "image/png",
+  });
+
+  if (navigator.share && navigator.canShare?.({ files: [file] })) {
+    await navigator.share({
+      title: "Estado actual",
+      text: "📊 Estado actual 👇",
+      files: [file],
+    });
+  }
+};
   return (
     <div className="app-container">
       <Toaster position="top-right" />
@@ -105,32 +108,24 @@ export default function Home() {
         seleccionados={seleccionados}
       />
 
-      {/* AREA QUE SE CONVIERTE EN IMAGEN */}
-      <div id="area-compartir">
-        <GridNumeros
-          numeros={numeros}
-          seleccionados={seleccionados}
-          userId={userId}
-          toggleSeleccion={toggleSeleccion}
-        />
+      <div id="area-compartir" className="numeros-container">
+  <div className="numeros-card">
 
-        <div className="leyenda-estados">
-          <div className="item-estado">
-            <span className="circulo reservado"></span>
-            <span>Reservado</span>
-          </div>
+    <GridNumeros
+      numeros={numeros}
+      seleccionados={seleccionados}
+      userId={userId}
+      toggleSeleccion={toggleSeleccion}
+    />
 
-          <div className="item-estado">
-            <span className="circulo pagado"></span>
-            <span>Pagado</span>
-          </div>
+    <div className="leyenda-estados">
+      <span><span className="dot libre"></span> Disponible</span>
+      <span><span className="dot reservado"></span> Reservado</span>
+      <span><span className="dot pagado"></span> Pagado</span>
+    </div>
 
-          <div className="item-estado">
-            <span className="circulo libre"></span>
-            <span>Disponible</span>
-          </div>
-        </div>
-      </div>
+  </div>
+</div>
 
       {/* BARRA PROGRESO */}
       <BarraProgreso numeros={numeros} />

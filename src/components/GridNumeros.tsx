@@ -46,7 +46,9 @@ const GridNumeros: React.FC<Props> = ({
             className={`botonNumero ${estadoClase}`}
             onClick={() => toggleSeleccion(n.numero)}
           >
-            {n.numero}
+            <span className="numeroTexto">
+              {n.numero}
+            </span>
           </button>
         );
       })}
