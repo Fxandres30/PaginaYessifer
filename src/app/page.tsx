@@ -143,10 +143,11 @@ export default function Home() {
         seleccionados={seleccionados}
       />
 
-      {/* ÁREA CAPTURA */}
       <div className="numeros-container">
-        <div className="numeros-card">
-
+        <div
+  className="numeros-card"
+  style={{ background: config.fondo }}
+>
           <GridNumeros
             numeros={numeros}
             seleccionados={seleccionados}
@@ -167,20 +168,6 @@ export default function Home() {
 
       {/* BARRA PROGRESO */}
       <BarraProgreso numeros={numeros} />
-
-      {/* WHATSAPP FLOAT */}
-      <Link
-        href="https://wa.me/573014123951"
-        target="_blank"
-        className="whatsapp-float"
-      >
-        <FaWhatsapp size={28} />
-      </Link>
-
-      {/* FOOTER */}
-      <footer className="footer">
-        <p>© 2026 EFAAT</p>
-      </footer>
 
       {/* EDITOR MODAL */}
       {mostrarEditor && (
