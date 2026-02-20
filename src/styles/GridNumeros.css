@@ -66,12 +66,12 @@
 
 .botonNumero.reservado {
   background: #fdd11e;
-  color: #78350f;
+  color: #fdd11e;
 }
 
 .botonNumero.pagado {
   background: #22c55e;
-  color: #ffffff;
+  color: #22c55e;
 }
 
 .botonNumero.temporal {
@@ -87,6 +87,7 @@
   justify-content: center;
   gap: 30px;
   margin-top: 18px;
+  margin-bottom: 10px;
   font-size: 13px;
   font-weight: 500;
   color: #334155;
@@ -135,3 +136,6 @@
     font-size: 12px;
   }
 }
+
+.modo-captura .leyenda-estados span { transform: translateY(10px); }
+.modo-captura .numeroTexto { transform: translateY(-9px); }
