@@ -1,0 +1,39 @@
+.editor-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.editor-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.editor-card textarea {
+  resize: none;
+  height: 80px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.editor-card input[type="color"] {
+  height: 40px;
+  border: none;
+}
+
+.editor-botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}

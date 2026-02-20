@@ -7,11 +7,11 @@
   padding: 0 8px;
 }
 
-.btn-reiniciar,
+.btn-reiniciar,.btn-editar,
 .btn-compartir {
   flex: 1;
-  max-width: 48%;
-  padding: 10px 14px;
+  max-width: 40%;
+  padding: 10px 10px;
   border-radius: 12px;
   border: none;
   font-weight: 600;
@@ -27,6 +27,16 @@
 
 .btn-reiniciar:hover {
   background: #dc2626;
+  transform: translateY(-2px);
+}
+
+.btn-editar {
+  background: #2248c5;
+  color: white;
+}
+
+.btn-editar:hover {
+  background: #2643a3;
   transform: translateY(-2px);
 }
 
