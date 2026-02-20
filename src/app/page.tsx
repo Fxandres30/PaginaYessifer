@@ -154,14 +154,16 @@ export default function Home() {
             toggleSeleccion={toggleSeleccion}
           />
 
-          <div className="leyenda-estados">
+          
+
+        </div>
+      </div>
+      
+      <div className="leyenda-estados">
             <span><span className="dot libre"></span> Disponible</span>
             <span><span className="dot reservado"></span> Reservado</span>
             <span><span className="dot pagado"></span> Pagado</span>
           </div>
-
-        </div>
-      </div>
 
       {/* BARRA PROGRESO */}
       <BarraProgreso numeros={numeros} />
