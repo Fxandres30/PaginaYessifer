@@ -63,13 +63,15 @@
 }
 
 .botonNumero.reservado {
-  background: #fdd11e;
-  color: #fdd11e;
+      background: #facc15;
+    border-color: #a16207;
+    color: #facc15;
 }
 
 .botonNumero.pagado {
-  background: #22c55e;
-  color: #22c55e;
+      background: #22c55e;
+    border-color: #14532d;
+    color: #22c55e;
 }
 
 .botonNumero.temporal {
