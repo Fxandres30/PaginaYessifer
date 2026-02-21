@@ -35,7 +35,7 @@ export default function useReservas() {
   const [updatingSet, setUpdatingSet] = useState<Set<string>>(new Set());
 
   const fetchNumeros = useCallback(async () => {
-  const { data, error } = await supabase.from("reservas_dos_cifras").select("*");
+  const { data, error } = await supabase.from("semanales20k").select("*");
   if (error) {
     toast.error("Error al cargar los números.");
     console.error("Error al cargar números:", error);
@@ -54,7 +54,7 @@ export default function useReservas() {
   if (expirados && expirados.length > 0) {
     const numerosExpirados = expirados.map((n) => n.numero);
     await supabase
-      .from("reservas_dos_cifras")
+      .from("semanales20k")
       .update({
         estado: "libre",
         temporal_por: null,
@@ -82,13 +82,13 @@ export default function useReservas() {
     fetchNumeros();
 
     const channel = supabase
-      .channel("reservas_dos_cifras")
+      .channel("semanales20k")
       .on(
         "postgres_changes",
         {
           event: "*",
           schema: "public",
-          table: "reservas_dos_cifras",
+          table: "semanales20k",
         },
         (payload) => {
           const newData = payload.new as Numero;
@@ -118,7 +118,7 @@ export default function useReservas() {
 
   try {
     const { data: checkData, error } = await supabase
-  .from("reservas_dos_cifras")
+  .from("semanales20k")
   .select("estado, temporal_por, comprador, contacto")
   .eq("numero", numero)
   .single();
@@ -150,7 +150,7 @@ if (!esSeleccionado && (checkData.estado === "reservado" || checkData.estado ===
       const expiracion = new Date(Date.now() + 5 * 60_000).toISOString();
 
       const { data: updateData } = await supabase
-        .from("reservas_dos_cifras")
+        .from("semanales20k")
         .update({
           estado: esSeleccionado ? "libre" : "temporal",
           temporal_por: esSeleccionado ? null : userId,
@@ -200,7 +200,7 @@ const confirmarReserva = async () => {
 
   // 2. Actualizar la reserva con la IP si está disponible
   const { data, error } = await supabase
-    .from("reservas_dos_cifras")
+    .from("semanales20k")
     .update({
       estado: "reservado",
       comprador: nombre.trim(),
@@ -280,7 +280,7 @@ const reiniciarNumeros = async () => {
   if (!seguro) return; // 👈 si cancela, NO hace nada
 
   const { error } = await supabase
-    .from("reservas_dos_cifras")
+    .from("semanales20k")
     .update({
       estado: "libre",
       comprador: null,

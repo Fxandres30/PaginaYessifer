@@ -47,7 +47,7 @@ export default function Home() {
 
   if (estado === "libre") {
     await supabase
-      .from("reservas_dos_cifras")
+      .from("semanales20k")
       .update({
         estado: "libre",
         comprador: null,
@@ -57,7 +57,7 @@ export default function Home() {
       .in("numero", seleccionados);
   } else {
     await supabase
-      .from("reservas_dos_cifras")
+      .from("semanales20k")
       .update({ estado })
       .in("numero", seleccionados);
   }
