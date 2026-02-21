@@ -25,7 +25,7 @@
 .gridNumeros {
   display: grid;
   grid-template-columns: repeat(10, minmax(0, 1fr));
-  gap: 6px;
+  gap: 3px;
 }
 
 /* ========================================
@@ -39,7 +39,7 @@
   align-items: center;
   justify-content: center;
 
-  border-radius: 6px;
+  border-radius: 3px;
   border: 1px solid #cbd5e1;
 
   font-size: 14px;
@@ -125,11 +125,11 @@
 @media (max-width: 600px) {
 
   .numeros-card {
-    padding: 14px;
+    padding: 13px;
   }
 
   .gridNumeros {
-    gap: 4px;
+    gap: 2px;
   }
 
   .botonNumero {
