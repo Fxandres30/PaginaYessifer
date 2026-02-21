@@ -36,7 +36,6 @@ const GridNumeros: React.FC<Props> = ({
         }
 
         const disabled =
-          (n.estado !== "libre" && !seleccionados.includes(n.numero)) ||
           (n.estado === "temporal" && n.temporal_por !== userId);
 
         return (

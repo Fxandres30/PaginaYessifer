@@ -1,4 +1,6 @@
-/* CONTENEDOR PRINCIPAL */
+/* ===============================
+   CONTENEDOR PRINCIPAL
+================================= */
 .formulario-contenedor {
   background: #ffffff;
   padding: 24px;
@@ -8,14 +10,18 @@
   border: 1px solid #e2e8f0;
 }
 
-/* BLOQUE DE CADA CAMPO */
+/* ===============================
+   BLOQUE DE CADA CAMPO
+================================= */
 .campo-formulario {
   display: flex;
   flex-direction: column;
   margin-bottom: 18px;
 }
 
-/* ETIQUETA */
+/* ===============================
+   ETIQUETA
+================================= */
 .etiqueta-campo {
   font-size: 14px;
   font-weight: 600;
@@ -23,7 +29,9 @@
   color: #334155;
 }
 
-/* INPUT */
+/* ===============================
+   INPUT
+================================= */
 .input-campo {
   padding: 10px 12px;
   border-radius: 8px;
@@ -38,7 +46,9 @@
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
-/* RESUMEN DE SELECCIÓN */
+/* ===============================
+   RESUMEN
+================================= */
 .resumen-seleccion {
   background: #f1f5f9;
   padding: 14px;
@@ -49,19 +59,25 @@
   line-height: 1.6;
 }
 
-/* CONTENEDOR BOTÓN */
+/* ===============================
+   CONTENEDOR BOTONES
+================================= */
 .boton-contenedor {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 20px;
+  justify-content: center;
 }
 
-/* BOTÓN */
+/* ===============================
+   BOTÓN PRINCIPAL
+================================= */
 .boton-reservar {
   background: #1e293b;
   color: #ffffff;
-  padding: 12px 24px;
-  border-radius: 10px;
+  padding: 10px 18px;
+  border-radius: 8px;
   border: none;
   font-weight: 600;
   cursor: pointer;
@@ -77,4 +93,50 @@
   background: #94a3b8;
   cursor: not-allowed;
   transform: none;
+}
+
+/* ===============================
+   BOTONES ESTADO
+================================= */
+.boton-estado {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-size: 13px;
+}
+
+/* Reservado */
+.boton-estado.reservado {
+  background: #fdd11e;
+  color: #5b4500;
+}
+
+.boton-estado.reservado:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+}
+
+/* Pagado */
+.boton-estado.pagado {
+  background: #22c55e;
+  color: white;
+}
+
+.boton-estado.pagado:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
+}
+
+/* Liberar */
+.boton-estado.libre {
+  background: #ef4444;
+  color: white;
+}
+
+.boton-estado.libre:hover {
+  transform: translateY(-2px);
+  filter: brightness(0.95);
 }

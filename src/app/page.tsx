@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { FaWhatsapp } from "react-icons/fa";
+import { supabase } from "../lib/supabaseClient";
 import { Toaster } from "react-hot-toast";
 import html2canvas from "html2canvas";
 
@@ -41,6 +40,28 @@ export default function Home() {
   const { config, actualizarConfig } = useConfigCompartir();
   const [mostrarEditor, setMostrarEditor] = useState(false);
 
+  const cambiarEstado = async (estado: "libre" | "reservado" | "pagado") => {
+  if (seleccionados.length === 0) return;
+
+  if (estado === "libre") {
+    await supabase
+      .from("reservas_dos_cifras")
+      .update({
+        estado: "libre",
+        comprador: null,
+        contacto: null,
+        temporal_por: null,
+      })
+      .in("numero", seleccionados);
+  } else {
+    await supabase
+      .from("reservas_dos_cifras")
+      .update({ estado })
+      .in("numero", seleccionados);
+  }
+
+  window.location.reload();
+};
   /* =======================
      FUNCIÓN COMPARTIR PRO
   ======================== */
@@ -108,10 +129,6 @@ export default function Home() {
           priority
         />
       </header>
-
-      {/* TÍTULO */}
-      <h1 className="titulo-principal">Dinámica Activa</h1>
-
       {/* BOTONES SUPERIORES */}
       <div className="acciones-superiores">
         <button className="btn-reiniciar" onClick={reiniciarNumeros}>
@@ -135,13 +152,14 @@ export default function Home() {
 
       {/* FORMULARIO */}
       <FormularioReserva
-        nombre={nombre}
-        contacto={contacto}
-        setNombre={setNombre}
-        setContacto={setContacto}
-        confirmarReserva={confirmarReserva}
-        seleccionados={seleccionados}
-      />
+  nombre={nombre}
+  contacto={contacto}
+  setNombre={setNombre}
+  setContacto={setContacto}
+  confirmarReserva={confirmarReserva}
+  cambiarEstado={cambiarEstado}
+  seleccionados={seleccionados}
+/>
 
       <div className="numeros-container">
         <div

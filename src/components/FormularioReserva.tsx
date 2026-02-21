@@ -1,14 +1,15 @@
 // components/FormularioReserva.tsx
-import React from 'react'
+import React from "react";
 
 type Props = {
-  nombre: string
-  contacto: string
-  setNombre: (value: string) => void
-  setContacto: (value: string) => void
-  confirmarReserva: () => void
-  seleccionados: string[]
-}
+  nombre: string;
+  contacto: string;
+  setNombre: (value: string) => void;
+  setContacto: (value: string) => void;
+  confirmarReserva: () => void;
+  cambiarEstado: (estado: "libre" | "reservado" | "pagado") => void;
+  seleccionados: string[];
+};
 
 const FormularioReserva: React.FC<Props> = ({
   nombre,
@@ -16,15 +17,17 @@ const FormularioReserva: React.FC<Props> = ({
   setNombre,
   setContacto,
   confirmarReserva,
-  seleccionados
+  cambiarEstado,
+  seleccionados,
 }) => {
-  if (seleccionados.length === 0) return null
+  if (seleccionados.length === 0) return null;
 
-  const PRECIO_POR_NUMERO = 2000
-  const total = seleccionados.length * PRECIO_POR_NUMERO
+  const PRECIO_POR_NUMERO = 2000;
+  const total = seleccionados.length * PRECIO_POR_NUMERO;
 
   return (
     <div className="formulario-contenedor">
+      
       <div className="campo-formulario">
         <label className="etiqueta-campo">Nombre:</label>
         <input
@@ -37,46 +40,63 @@ const FormularioReserva: React.FC<Props> = ({
       </div>
 
       <div className="campo-formulario">
-  <label className="etiqueta-campo">Contacto:</label>
-  <input
-    type="tel"
-    maxLength={10}
-    pattern="[0-9]*"
-    value={contacto}
-    onChange={(e) => {
-      const soloNumeros = e.target.value.replace(/\D/g, '');
-      setContacto(soloNumeros);
-    }}
-    className="input-campo"
-    placeholder="Ingresa tu número de celular"
-  />
-</div>
+        <label className="etiqueta-campo">Contacto:</label>
+        <input
+          type="tel"
+          maxLength={10}
+          pattern="[0-9]*"
+          value={contacto}
+          onChange={(e) => {
+            const soloNumeros = e.target.value.replace(/\D/g, "");
+            setContacto(soloNumeros);
+          }}
+          className="input-campo"
+          placeholder="Ingresa tu número de celular"
+        />
+      </div>
 
+      <div className="resumen-seleccion">
+        <p><strong>Números seleccionados:</strong> {seleccionados.join(", ")}</p>
+        <p><strong>Total:</strong> ${total.toLocaleString("es-CO")}</p>
+      </div>
 
-      
-      {/* Resumen de selección */}
-<div className="resumen-seleccion">
-  <p><strong>Números seleccionados:</strong> {seleccionados.join(", ")}</p>
-  <p><strong>Total a consignar:</strong> ${total.toLocaleString('es-CO')}</p>
-  <p>Confirma tu reserva para que puedas realizar la transferencia a las cuentas disponibles.</p>
-</div>
-
-
+      {/* BOTONES */}
       <div className="boton-contenedor">
+
         <button
           className="boton-reservar"
           disabled={
-  nombre.trim() === '' || 
-  contacto.trim().length !== 10
-}
-
+            nombre.trim() === "" || contacto.trim().length !== 10
+          }
           onClick={confirmarReserva}
         >
-          Confirmar reserva
+          Confirmar
         </button>
+
+        <button
+          className="boton-estado reservado"
+          onClick={() => cambiarEstado("reservado")}
+        >
+          Reservado
+        </button>
+
+        <button
+          className="boton-estado pagado"
+          onClick={() => cambiarEstado("pagado")}
+        >
+          Pagado
+        </button>
+
+        <button
+          className="boton-estado libre"
+          onClick={() => cambiarEstado("libre")}
+        >
+          Liberar
+        </button>
+
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FormularioReserva
+export default FormularioReserva;
