@@ -16,13 +16,13 @@
 
 .admin-filtros {
   display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+  gap: 3px;
+  margin-bottom: 10px;
   flex-wrap: wrap;
 }
 
 .admin-filtros button {
-  padding: 6px 14px;
+  padding: 5px 9px;
   border-radius: 20px;
   border: 1px solid #cbd5e1;
   background: white;
@@ -37,7 +37,7 @@
 }
 
 .admin-buscador {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .admin-buscador input {
@@ -53,16 +53,17 @@
 }
 
 .admin-tabla {
-  width: 100%;
+  width: 10%;
   border-collapse: collapse;
   font-size: 13px;
 }
 
 .admin-tabla th,
 .admin-tabla td {
-  padding: 10px;
+  padding: 2px;
   text-align: center;
   border-bottom: 1px solid #e2e8f0;
+  margin-left: 2px;
 }
 
 .admin-tabla thead {
