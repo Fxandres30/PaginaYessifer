@@ -60,6 +60,7 @@
 .botonNumero.libre {
   background: #ffffff;
   color: #0f172a;
+  border-color: #6b6b6b;
 }
 
 .botonNumero.reservado {
