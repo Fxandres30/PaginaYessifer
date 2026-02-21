@@ -118,11 +118,10 @@ export default function useReservas() {
 
   try {
     const { data: checkData, error } = await supabase
-      .from("reservas_dos_cifras")
-      .select("estado, temporal_por")
-      .eq("numero", numero)
-      .single();
-
+  .from("reservas_dos_cifras")
+  .select("estado, temporal_por, comprador, contacto")
+  .eq("numero", numero)
+  .single();
     if (error || !checkData) {
       toast.error("Error al verificar el número.");
       await fetchNumeros();
@@ -141,6 +140,11 @@ export default function useReservas() {
       return;
     }
 
+    // 🔥 Si está reservado o pagado → cargar datos al formulario
+if (!esSeleccionado && (checkData.estado === "reservado" || checkData.estado === "pagado")) {
+  setNombre(checkData.comprador || "");
+  setContacto(checkData.contacto || "");
+}
     // 🔥 SOLO si está libre manejamos temporal
     if (checkData.estado === "libre") {
       const expiracion = new Date(Date.now() + 5 * 60_000).toISOString();

@@ -13,7 +13,9 @@ import useReservas from "../hooks/useReservas";
 import GridNumeros from "../components/GridNumeros";
 import FormularioReserva from "../components/FormularioReserva";
 import BarraProgreso from "../components/BarraProgreso";
+import ListaNumerosAdmin from "../components/ListaNumerosAdmin";
 
+import "../styles/adminLista.css";
 import "../styles/editor.css";
 import "../styles/BarraProgreso.css";
 import "../styles/header.css";
@@ -186,6 +188,8 @@ export default function Home() {
 
       {/* BARRA PROGRESO */}
       <BarraProgreso numeros={numeros} />
+
+<ListaNumerosAdmin numeros={numeros} />
 
       {/* EDITOR MODAL */}
       {mostrarEditor && (

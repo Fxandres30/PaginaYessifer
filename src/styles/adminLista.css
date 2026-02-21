@@ -1,0 +1,84 @@
+.admin-lista-container {
+  margin-top: 6px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 14px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.admin-titulo {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.admin-filtros {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.admin-filtros button {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.admin-filtros button.activo {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.admin-buscador {
+  margin-bottom: 20px;
+}
+
+.admin-buscador input {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+.admin-tabla-wrapper {
+  overflow-x: auto;
+}
+
+.admin-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.admin-tabla th,
+.admin-tabla td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-tabla thead {
+  background: #f1f5f9;
+}
+
+.estado-reservado td {
+  color: #b45309;
+  font-weight: 600;
+}
+
+.estado-pagado td {
+  color: #15803d;
+  font-weight: 600;
+}
+
+.estado-libre td {
+  color: #475569;
+}
