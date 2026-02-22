@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { toast } from "react-hot-toast"; // <- añadido
-import { v4 as uuidv4 } from "uuid";
+const uuidv4 = () => crypto.randomUUID();
 
 export type Numero = {
   id: number;
