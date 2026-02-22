@@ -31,7 +31,7 @@
 }
 
 .reservados {
-  background: #fdd11e;   /* amarillo fuerte */
+  background: #af1313;  /* amarillo fuerte */
 }
 
 .libres {
@@ -89,7 +89,7 @@
 }
 
 .color.reservados {
-  border-left: 2px solid #fdd11e;
+  border-left: 2px solid #af1313;;
   color: #92400e;
 }
 
